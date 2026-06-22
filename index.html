@@ -14,18 +14,23 @@
 
   :root {
     --bg: #0a0c0f;
-    --bg2: #111318;
-    --bg3: #181c22;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
-    --text: #e8eaf0;
-    --muted: #7a8496;
-    --accent: #f48120;
-    --accent2: #2d82f0;
+    --bg2: rgba(17, 19, 24, 0.82);
+    --bg3: rgba(24, 28, 34, 0.9);
+
+    --border: rgba(255,255,255,0.12);
+    --border2: rgba(255,255,255,0.20);
+
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+
+    --accent: #ff9d3f;
+    --accent2: #60a5fa;
+
     --green: #22c55e;
+
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Inter', sans-serif;
-  }
+}
 
   html { scroll-behavior: smooth; }
 
@@ -352,7 +357,8 @@
     gap: 1rem;
   }
   .cert-card {
-    background: var(--bg2);
+    background: rgba(17, 19, 24, 0.72);
+    backdrop-filter: blur(14px);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 1.25rem;
