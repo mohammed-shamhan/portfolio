@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Mohammed Shamhan - Network Administrator specializing in SD-WAN, Aruba, Cisco, Fortinet and Enterprise Networking">
+<meta name="keywords" content="Network Engineer, SD-WAN, Aruba, Cisco, Fortinet">
+<meta name="author" content="Mohammed Shamhan">
+<title>Mohammed Shamhan · Network Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c0f;
+    --bg2: #111318;
+    --bg3: #181c22;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8eaf0;
+    --muted: #7a8496;
+    --accent: #f48120;
+    --accent2: #2d82f0;
+    --green: #22c55e;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    background: rgba(10,12,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 80px 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-inner { max-width: 680px; }
+
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    background: rgba(244,129,32,0.1);
+    border: 1px solid rgba(244,129,32,0.25);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .tag-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .accent { color: var(--accent); }
+  .accent2 { color: var(--accent2); }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #e07010; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border2);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--border2); background: var(--bg3); }
+
+  /* TERMINAL HERO VISUAL */
+  .hero-visual {
+    margin-left: auto;
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .hero { gap: 4rem; }
+    .hero-visual { display: block; flex-shrink: 0; width: 340px; }
+  }
+
+  .terminal {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .terminal-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 14px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+  .terminal-title { font-size: 11px; color: var(--muted); margin: 0 auto; }
+  .terminal-body { padding: 16px; line-height: 2; }
+  .t-muted { color: var(--muted); }
+  .t-green { color: var(--green); }
+  .t-orange { color: var(--accent); }
+  .t-blue { color: var(--accent2); }
+  .t-white { color: var(--text); }
+  .cursor {
+    display: inline-block; width: 8px; height: 14px;
+    background: var(--accent); vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* SECTION */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .skill-card:hover { border-color: var(--border2); }
+  .skill-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .skill-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .skill-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border2);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -5px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .tl-meta {
+    display: flex; align-items: baseline; gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+  .tl-role {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .tl-company {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+  }
+  .tl-date {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .tl-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+  }
+  .tl-bullets { margin-top: 0.75rem; padding-left: 1rem; }
+  .tl-bullets li {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+    list-style: none;
+    position: relative;
+  }
+  .tl-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: -1rem;
+    color: var(--accent);
+  }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex; align-items: center; gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--border2); }
+  .cert-logo {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .cert-name {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .cert-status {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-top: 2px;
+  }
+  .badge-active {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .badge-progress {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--border2); color: var(--text); }
+  .contact-link svg { width: 16px; height: 16px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat { }
+  .stat-num {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3.5rem 1rem; }
+    .contact-card { padding: 2rem 1.25rem; }
+    .hero { padding: 80px 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">shamhan@network:~$</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certs</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">
+      <span class="tag-dot"></span>
+      Open to opportunities
+    </div>
+    <h1>Network<br/>Engineer &amp;<br/><span class="accent">Infrastructure</span><br/><span class="accent2">Specialist</span></h1>
+    <p class="hero-desc">
+      Managing enterprise network infrastructure across multi-site enterprise environments via TCS — specializing in SD-WAN, Aruba wireless, Cisco networking, Fortinet security, and infrastructure operations.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <a class="btn btn-ghost" href="#experience">View experience</a>
+      <a class="btn btn-primary" href="Mohammed Shamhan.pdf" download>Download Resume</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">retail sites managed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5.4+</div>
+        <div class="stat-label">years experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">enterprise clients</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal -->
+  <div class="hero-visual">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="terminal-title">aruba-central — ssh</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-green">shamhan@tcs</span><span class="t-muted">:</span><span class="t-blue">~</span><span class="t-muted">$</span> <span class="t-white">show ap bss-table</span></div>
+        <div class="t-muted">Fetching AP health...</div>
+        <div><span class="t-green">✓</span> <span class="t-white">AP count:</span> <span class="t-orange">247</span></div>
+        <div><span class="t-green">✓</span> <span class="t-white">Online:</span> <span class="t-green">244</span></div>
+        <div><span class="t-green">✓</span> <span class="t-white">Alerts:</span> <span class="t-orange">3</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-green">shamhan@tcs</span><span class="t-muted">:</span><span class="t-blue">~</span><span class="t-muted">$</span> <span class="t-white">run fw-upgrade.py</span></div>
+        <div class="t-muted">Loading store list (60 sites)...</div>
+        <div><span class="t-green">✓</span> <span class="t-white">Pre-checks passed</span></div>
+        <div><span class="t-green">✓</span> <span class="t-white">Upgrading STR001...</span></div>
+        <div><span class="t-orange">→</span> <span class="t-muted">8.10.0.12 → 8.13.1.2</span></div>
+        <div>&nbsp;</div>
+        <div><span class="t-green">shamhan@tcs</span><span class="t-muted">:</span><span class="t-blue">~</span><span class="t-muted">$</span> <span class="cursor"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// expertise</div>
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(45,130,240,0.12);">🛜</div>
+      <h3>Wireless Networking</h3>
+      <p>Deploying and managing Aruba access points across multi-site retail environments with Aruba Central.</p>
+      <div class="tags-row">
+        <span class="pill">Aruba APs</span>
+        <span class="pill">Aruba Central</span>
+        <span class="pill">ClearPass</span>
+        <span class="pill">802.1X</span>
+        <span class="pill">RADIUS</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(244,129,32,0.12);">🔥</div>
+      <h3>Firewall &amp; Security</h3>
+      <p>Configuring and managing enterprise firewalls, zero-trust network access, and security policies.</p>
+      <div class="tags-row">
+        <span class="pill">Fortinet FortiGate</span>
+        <span class="pill">NSE</span>
+        <span class="pill">SD-WAN</span>
+        <span class="pill">VPN</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(34,197,94,0.12);">⚙️</div>
+      <h3>Network Automation</h3>
+      <p>Building Python scripts using Aruba Central API for firmware upgrades, health checks, and bulk ops.</p>
+      <div class="tags-row">
+        <span class="pill">Python</span>
+        <span class="pill">Aruba API</span>
+        <span class="pill">REST</span>
+        <span class="pill">CSV/HTML Reports</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(244,129,32,0.12);">☁️</div>
+      <h3>Cloud &amp; DNS</h3>
+      <p>O365/Exchange administration, DNS management via Infoblox and UltraDNS, and cloud networking concepts.</p>
+      <div class="tags-row">
+        <span class="pill">O365</span>
+        <span class="pill">Infoblox</span>
+        <span class="pill">UltraDNS</span>
+        <span class="pill">Exchange</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(45,130,240,0.12);">🔌</div>
+      <h3>Routing &amp; Switching</h3>
+      <p>Enterprise LAN/WAN design, STP, VLAN management, and Cisco and Aruba EdgeConnect SD-WAN.</p>
+      <div class="tags-row">
+        <span class="pill">Cisco</span>
+        <span class="pill">Aruba EdgeConnect</span>
+        <span class="pill">BGP</span>
+        <span class="pill">STP</span>
+        <span class="pill">VLANs</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon" style="background: rgba(34,197,94,0.12);">🛡️</div>
+      <h3>Identity &amp; Access</h3>
+      <p>Device profiling, NAC policies, EAP/PEAP authentication flows, CoA, and ClearPass cluster management.</p>
+      <div class="tags-row">
+        <span class="pill">ClearPass CPPM</span>
+        <span class="pill">EAP-TLS</span>
+        <span class="pill">CoA</span>
+        <span class="pill">NAC</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// history</div>
+  <h2>Experience</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-meta">
+        <span class="tl-role">Network Administrator</span>
+        <span class="tl-company">TCS · Sainsbury's</span>
+        <span class="tl-date">Apr 2023 – Present</span>
+      </div>
+      <ul class="tl-bullets">
+        <li>Manage wireless infrastructure across 80+ Sainsbury's retail stores using Aruba APs and Aruba Central</li>
+        <li>Built Python automation for firmware upgrades with pre/post health checks, HTML email reports, and resume capability across 60+ sites</li>
+        <li>Troubleshoot ClearPass RADIUS authentication issues including 802.1X EAP failures on iPads and POS devices</li>
+        <li>Resolved AP template sync failures caused by SNMPv3 conflicts during firmware 8.13.1.2 rollout across 26 stores</li>
+        <li>Diagnosed and fixed O365 email delivery failures rooted in Accepted Domain misconfiguration (Authoritative vs Internal Relay)</li>
+        <li>Manage DNS via Infoblox and UltraDNS; firewall policy management on Fortinet FortiGate</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-meta">
+        <span class="tl-role">Cyber Security Analyst</span>
+        <span class="tl-company">EITACIES INC</span>
+        <span class="tl-date">2020 – 2022</span>
+      </div>
+      <ul class="tl-bullets">
+        <li>Security monitoring, threat analysis, and incident response in enterprise environments</li>
+        <li>Configured and maintained firewall rules, VPN policies, and network access controls</li>
+        <li>Supported compliance and vulnerability assessment activities across client infrastructure</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-meta">
+        <span class="tl-role">Network Engineer</span>
+        <span class="tl-company">Cognizant</span>
+        <span class="tl-date">2018 – 2020</span>
+      </div>
+      <ul class="tl-bullets">
+        <li>Supported LAN/WAN operations, routing and switching (Cisco), and network infrastructure maintenance</li>
+        <li>Assisted with VLAN configurations, STP design, and network documentation</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-label">// credentials</div>
+  <h2>Certifications</h2>
+  <div class="certs-grid">
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background: rgba(244,129,32,0.12);">🔐</div>
+      <div>
+        <div class="cert-name">Fortinet NSE 3 / FCF / FCA</div>
+        <div class="cert-status"><span class="badge-active"></span>Active</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background: rgba(45,130,240,0.12);">☁️</div>
+      <div>
+        <div class="cert-name">AWS Solutions Architect Associate</div>
+        <div class="cert-status"><span class="badge-progress"></span>In progress</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background: rgba(45,130,240,0.12);">🌐</div>
+      <div>
+        <div class="cert-name">AWS Advanced Networking Specialty</div>
+        <div class="cert-status"><span class="badge-progress"></span>Planned</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-logo" style="background: rgba(34,197,94,0.12);">🎓</div>
+      <div>
+        <div class="cert-name">ITIL Foundation</div>
+        <div class="cert-status"><span class="badge-active"></span>Active</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-card">
+    <h3>Let's connect</h3>
+    <p>Open to senior network engineering, cloud networking, and infrastructure automation roles.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:mohammedshamhan1@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email me
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/mohammedshamhan" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
+        LinkedIn
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Mohammed Shamhan · Built with HTML · Hosted on Cloudflare · Bengaluru, India</span>
+</footer>
+
+</body>
+</html>
