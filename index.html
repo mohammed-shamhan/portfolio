@@ -49,6 +49,12 @@
     background: #05070d;
     overflow: hidden;
 }
+ #particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none; 
+}
 
 .aurora-bg span {
     position: absolute;
@@ -482,6 +488,8 @@
   <span></span>
   <span></span>
 </div>
+ <div id="particles-js"></div>
+ 
 <nav>
   <div class="nav-logo">shamhan@network:~$</div>
   <div class="nav-links">
@@ -752,5 +760,36 @@
   <span>Mohammed Shamhan · Built with HTML · Hosted on Cloudflare · Bengaluru, India</span>
 </footer>
 
+
+
+ <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: {
+      value: 60,
+      density: { enable: true, value_area: 1000 }
+    },
+    color: {
+      value: ["#60a5fa", "#f48120"]
+    },
+    shape: { type: "circle" },
+    opacity: { value: 0.45 },
+    size: { value: 3 },
+    line_linked: {
+      enable: true,
+      distance: 160,
+      color: "#60a5fa",
+      opacity: 0.22,
+      width: 1
+    },
+    move: {
+      enable: true,
+      speed: 1.8
+    }
+  }
+});
+</script>
 </body>
 </html>
