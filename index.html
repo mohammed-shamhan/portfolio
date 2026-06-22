@@ -30,14 +30,51 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background: transparent;
     color: var(--text);
     font-family: var(--sans);
     font-size: 15px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
+.aurora-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: #05070d;
+    overflow: hidden;
+}
 
+.aurora-bg span {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(130px);
+    animation: float 12s infinite alternate ease-in-out;
+}
+
+.aurora-bg span:first-child {
+    background: rgba(0, 102, 255, 0.8);
+    left: 8%;
+    top: 20%;
+}
+
+.aurora-bg span:last-child {
+    background: rgba(255, 0, 153, 0.75);
+    right: 8%;
+    top: 30%;
+    animation-duration: 16s;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(-50px) scale(1);
+    }
+    to {
+        transform: translateY(80px) scale(1.2);
+    }
+}
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -435,7 +472,10 @@
 </style>
 </head>
 <body>
-
+<div class="aurora-bg">
+  <span></span>
+  <span></span>
+</div>
 <nav>
   <div class="nav-logo">shamhan@network:~$</div>
   <div class="nav-links">
